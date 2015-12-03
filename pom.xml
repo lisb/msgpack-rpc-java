@@ -51,6 +51,42 @@
       </plugin>
 
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>org.msgpack:msgpack-rpc</include>
+                  <include>org.jboss.netty:netty</include>
+                </includes>
+              </artifactSet>
+              <filters>
+                <filter>
+                  <artifact>org.jboss.netty:netty</artifact>
+                  <excludes>
+                    <exclude>META-INF/**</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+              <relocations>
+                <relocation>
+                  <pattern>org.jboss.netty</pattern>
+                  <shadedPattern>org.msgpack.rpc.repackaged.netty</shadedPattern>
+                </relocation>
+              </relocations>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <version>2.1</version>
         <configuration>
