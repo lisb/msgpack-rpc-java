@@ -5,3 +5,5 @@ target
 .settings
 .iml
 *~
+.gradle/
+build/
