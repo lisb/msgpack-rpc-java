@@ -19,17 +19,18 @@ repositories {
 }
 
 dependencies {
-    compile 'org.msgpack:msgpack:0.6.6'
-    compile 'org.jboss.netty:netty:3.2.1.Final'
-    compile 'org.slf4j:slf4j-api:1.6.1'
-    compile 'org.slf4j:slf4j-log4j12:1.6.1'
-    testCompile 'junit:junit:4.8.2'
+    implementation 'org.msgpack:msgpack:0.6.12'
+    runtimeOnly 'org.javassist:javassist:3.25.0-GA'
+    implementation 'org.jboss.netty:netty:3.2.1.Final'
+    implementation 'org.slf4j:slf4j-api:1.6.1'
+    implementation 'org.slf4j:slf4j-log4j12:1.6.1'
+    testImplementation 'junit:junit:4.12'
 }
 
 group = 'repackaged.org.msgpack'
-version = '0.7.1-SNAPSHOT'
+version = '0.7.1-SNAPSHOT-java11'
 description = 'msgpack-rpc'
-sourceCompatibility = '1.8'
+sourceCompatibility = JavaVersion.VERSION_11
 
 publishing {
     publications {
